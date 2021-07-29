@@ -1,6 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
+
 
 module.exports = {
   mode: 'development',
@@ -36,6 +38,7 @@ module.exports = {
         },
       ],
     }),
+    new VueLoaderPlugin()
   ],
   module: {
     rules: [
@@ -51,6 +54,17 @@ module.exports = {
             ]
           }
         }
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
       }
     ]
   }

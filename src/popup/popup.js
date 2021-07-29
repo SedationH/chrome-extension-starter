@@ -1,3 +1,11 @@
+import Vue from 'vue'
+import App from './App.vue'
+
+new Vue({
+  render: (h) => h(App),
+}).$mount("#app")
+
+
 // Initialize button with user's preferred color
 let changeColor = document.getElementById('changeColor')
 
