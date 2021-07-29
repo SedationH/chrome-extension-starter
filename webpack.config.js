@@ -26,10 +26,6 @@ module.exports = {
       filename: 'options.html',
       chunks: ['options'],
     }),
-    // new HtmlWebpackPlugin({
-    //   template: path.join(__dirname, 'src', 'background.html'),
-    //   filename: 'background.html',
-    // }),
     new CopyPlugin({
       patterns: [
         {
@@ -41,4 +37,22 @@ module.exports = {
       ],
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: [
+              "@babel/plugin-transform-runtime"
+            ]
+          }
+        }
+      }
+    ]
+  }
+
 }
